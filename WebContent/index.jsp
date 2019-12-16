@@ -20,6 +20,7 @@
 		<li><a href="<%=request.getContextPath()%>/jquery/text/text.jsp">javascript-ajax: text</a></li>
 		<li><a href="<%=request.getContextPath()%>/jquery/html/html.jsp">javascript-ajax: html</a></li>
 		<li><a href="<%=request.getContextPath()%>/jquery/csv/csv.jsp">javascript-ajax: csv</a></li>
+		<li><a href="<%=request.getContextPath()%>/jquery/csv/autoComplete.jsp">javascript-ajax: autoComplete</a></li>
 	</ul>
 	
 </body>

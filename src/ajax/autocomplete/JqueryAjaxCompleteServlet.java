@@ -26,7 +26,6 @@ public class JqueryAjaxCompleteServlet extends HttpServlet {
 		
 		//2.파라미터핸들링
 		String srchName = request.getParameter("srchName");
-		System.out.println("srchName="+srchName);
 		
 		//유효성 검사
 		if(srchName.trim().isEmpty()) return;
@@ -35,9 +34,17 @@ public class JqueryAjaxCompleteServlet extends HttpServlet {
 		List<String> nameList = new AjaxDAO().selectByName(srchName);
 		
 		//csv 작업
-		
+		StringBuilder csv = new StringBuilder();
+		for(int i = 0; i < nameList.size(); i++) {
+			if(i!=0) csv.append("\n");
+			
+			csv.append(nameList.get(i));
+		}
 		
 		//4.view단 처리: csv형태로 전송
+		response.setContentType("text/csv; charset=utf-8");
+		response.getWriter().append(csv);
+		
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
