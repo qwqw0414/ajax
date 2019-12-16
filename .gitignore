@@ -2,3 +2,5 @@
 .project
 .settings/
 WebContent/META-INF/MANIFEST.MF
+WebContent/WEB-INF/jspwork/
+WebContent/WEB-INF/classes/
