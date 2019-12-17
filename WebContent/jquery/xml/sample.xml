@@ -33,6 +33,16 @@
 	<book>
 		<subject>프로그래밍</subject>
 		<title><![CDATA[JSP & Servlet]]></title>
+		<title>JSP $amp; Servlet</title>
 		<author>세종대왕</author>
 	</book>
 </books>
+<!-- 
+CDATA : Character Data, escaping처리됨.
+		< > & xml예약문자, tag/entity를 표현함.
+		&lt; &gt; &amp;
+		<![CDATA[문자 그대로 처리할 값]]
+
+PCDATA : Parsed Character Data
+
+ -->
