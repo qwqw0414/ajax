@@ -35,14 +35,15 @@ public class JqueryAjaxCompleteServlet extends HttpServlet {
 		
 		//csv 작업
 		StringBuilder csv = new StringBuilder();
-		for(int i = 0; i < nameList.size(); i++) {
-			if(i!=0) csv.append("\n");
-			
-			csv.append(nameList.get(i));
+		if(nameList!=null && !nameList.isEmpty()){
+			for(int i=0; i< nameList.size(); i++){
+				if(i!=0) csv.append(",");
+				csv.append(nameList.get(i));
+			}
 		}
 		
 		//4.view단 처리: csv형태로 전송
-		response.setContentType("text/csv; charset=utf-8");
+//		response.setContentType("text/csv; charset=utf-8");
 		response.getWriter().append(csv);
 		
 	}
