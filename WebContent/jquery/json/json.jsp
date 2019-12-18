@@ -133,5 +133,38 @@ img{width: 100px;}
         });
     });
     </script>
+
+    <h2>서버에 json문자열 보내기</h2>
+    <input type="text" id="name2" placeholder="이름"><br>
+    <input type="text" id="phone2" placeholder="전화번호"><br>
+    <input type="text" id="profile2" placeholder="프로필"><br>
+    <button id="btn4">회원가입</button>
+    <script>
+    $("#btn4").click(()=>{
+        var member = {
+            name : $("#name2").val(),
+            phone : $("#phone2").val(),
+            profile : $("#profile2").val()
+        }
+
+        var jsonMember = JSON.stringify(member);
+    
+        $.ajax({
+            url:"<%=request.getContextPath()%>/jquery/json/member/insertMember2",
+            data: {jsonMember:jsonMember},
+            type: "post",
+            success: data =>{
+                console.log(data);
+            },
+            error : (jqxhr, textStatus, errorThrown)=>{
+                console.log(jqxhr, textStatus, errorThrown);
+            },
+            complete : function(data){
+                $("#name2, #phone2, #profile2").val("");
+            }
+
+        });
+    });
+    </script>
 </body>
 </html>
