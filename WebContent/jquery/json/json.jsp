@@ -105,7 +105,7 @@ img{width: 100px;}
 
         if(name.length == 0) return;
         if(phone.length == 0) return;
-        if(profile.length == 0) return;
+//         if(profile.length == 0) return;
 
         $.ajax({
             url:"<%=request.getContextPath()%>/jquery/json/member/insertMember",
