@@ -1,6 +1,7 @@
-package ajax.jquery.json;
+package smart.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -12,38 +13,32 @@ import javax.servlet.http.HttpServletResponse;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
-import common.MemberSingletone;
-import member.model.vo.Member;
+import smart.vo.model.SmartPhone;
+import smart.vo.service.SmartService;
 
-@WebServlet("/jquery/json/member/searchName")
-public class SeachNameServlet extends HttpServlet {
+@WebServlet("/smart/selectRank")
+public class PhoneRank extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    public SeachNameServlet() {
+    public PhoneRank() {
         super();
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setCharacterEncoding("utf-8");
-		String srchName = request.getParameter("srchName");
-		
-		List<Member> list = MemberSingletone.getInstance().getList();
+		List<SmartPhone> phoneList = new ArrayList<>();
+		phoneList = new SmartService().selectRank();
 		
 		JSONArray jsonArray = new JSONArray();
 		
-		for(Member m : list) {
-			
-			if(m.getName().contains(srchName)) {
-				JSONObject jsonMember = new JSONObject();
-				jsonMember.put("name", m.getName());
-				jsonMember.put("phone", m.getPhone());
-				jsonMember.put("profile", m.getProfile());
-				jsonArray.add(jsonMember);
-			}
+		for(SmartPhone index : phoneList) {
+			JSONObject jsonOutput = new JSONObject();
+			jsonOutput.put("pname", index.getPname());
+			jsonOutput.put("amount", index.getAmount());
+			jsonArray.add(jsonOutput);
 		}
-		
+		System.out.println(jsonArray);
 		response.setContentType("application/json; charset=utf-8");
-		response.getWriter().append(jsonArray.toString());
+		response.getWriter().print(jsonArray.toString());
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

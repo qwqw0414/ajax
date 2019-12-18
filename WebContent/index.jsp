@@ -25,5 +25,9 @@
 		<li><a href="<%=request.getContextPath()%>/jquery/json/json.jsp">javascript-json: xml</a></li>
 	</ul>
 	
+	<h2>@실습문제:스마트가전센터</h2>
+	<ul>
+		<li><a href="<%=request.getContextPath()%>/smart/smart.jsp">@실습문제</a></li>
+	</ul>
 </body>
 </html>
